@@ -1,0 +1,5 @@
+import { actionCreatorFactory } from 'typescript-fsa';
+
+const actionCreator = actionCreatorFactory('{{kebabCase redux_module_name}}');
+
+export const reset{{pascalCase redux_module_name}} = actionCreator<void>('RESET');

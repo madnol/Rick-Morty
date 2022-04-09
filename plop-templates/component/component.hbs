@@ -1,0 +1,46 @@
+import { FunctionComponent } from 'react';
+import classnames from 'classnames';
+import './{{kebabCase component_name}}.styles.scss';
+{{#if component_redux}}
+import { connect } from 'react-redux';
+
+import { RootState } from 'core/store/store.types';
+{{/if}}
+
+{{#if component_redux}}
+interface OwnProps {
+{{else}}
+export interface Props {
+  className?: string;
+{{/if}}
+}
+{{#if component_redux}}
+interface StateProps {}
+interface DispatchProps {}
+
+export type Props = OwnProps & StateProps & DispatchProps;
+{{/if}}
+
+{{#if component_story}}
+export const {{pascalCase component_name}}: FunctionComponent<Props> = ({
+{{else}}
+const {{pascalCase component_name}}: FunctionComponent<Props> = ({
+{{/if}}
+  className,
+  ...otherProps
+}) => (
+  <div className={classnames("{{kebabCase component_name}}", className)} {...otherProps}>
+    {/* Some content Here */}
+  </div>
+);
+
+{{pascalCase component_name}}.displayName = '{{pascalCase component_name}}';
+
+{{#if component_redux}}
+export default connect<StateProps, DispatchProps, OwnProps, RootState>(
+  (state: RootState, ownProps: OwnProps) => ({}),
+  {}
+)({{pascalCase component_name}});
+{{else}}
+export default {{pascalCase component_name}};
+{{/if}}

@@ -1,0 +1,15 @@
+import reducer, {
+  initialState as {{camelCase redux_module_name}}InitialState,
+} from './{{kebabCase redux_module_name}}.reducer';
+import * as {{camelCase redux_module_name}}Actions from './{{kebabCase redux_module_name}}.actions';
+import * as {{camelCase redux_module_name}}Selectors from './{{kebabCase redux_module_name}}.selectors';
+import * as {{camelCase redux_module_name}}Async from './{{kebabCase redux_module_name}}.thunks';
+
+export default reducer;
+export * from './{{kebabCase redux_module_name}}.types';
+export {
+  {{camelCase redux_module_name}}InitialState,
+  {{camelCase redux_module_name}}Actions,
+  {{camelCase redux_module_name}}Selectors,
+  {{camelCase redux_module_name}}Async,
+};

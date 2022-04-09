@@ -1,0 +1,14 @@
+import { RootState } from '../../store.types';
+import * as selectors from './{{kebabCase redux_module_name}}.selectors';
+import { State } from './{{kebabCase redux_module_name}}.types';
+
+const mockState = {
+  {{camelCase redux_module_name}}: {} as State,
+} as RootState;
+
+describe('[REDUX] {{titleCase redux_module_name}} - Selectors', () => {
+  it('getCurrentState() should return this module state', () => {
+    expect(selectors.getCurrentState(mockState)).toBe(mockState.{{camelCase redux_module_name}});
+  });
+  it.skip('TBI', () => {});
+});

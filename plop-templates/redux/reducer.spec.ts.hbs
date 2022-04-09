@@ -1,0 +1,15 @@
+import reducer, { initialState } from './{{kebabCase redux_module_name}}.reducer';
+import * as actions from './{{kebabCase redux_module_name}}.actions';
+import { State } from './{{kebabCase redux_module_name}}.types';
+
+describe('[REDUX] {{titleCase redux_module_name}} - Reducer', () => {
+  it('should have the correct initial state', () => {
+    const newState = reducer(undefined, { type: 'not existing action' });
+    expect(newState).toEqual(initialState);
+  });
+  it('on reset{{pascalCase redux_module_name}}, should reset the initalState', () => {
+    const newState = reducer({} as State, actions.reset{{pascalCase redux_module_name}});
+    expect(newState).toEqual(initialState);
+  });
+  it.skip('TBI', () => {});
+});

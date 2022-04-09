@@ -1,0 +1,9 @@
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
+import { State } from './{{kebabCase redux_module_name}}.types';
+import * as actions from './{{kebabCase redux_module_name}}.actions';
+
+export const initialState: Readonly<State> = {};
+
+export default reducerWithInitialState(initialState)
+  .case(actions.reset{{pascalCase redux_module_name}}, () => ({ ...initialState }))
+  .build();
