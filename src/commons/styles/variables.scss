@@ -1,0 +1,181 @@
+// PALETTE
+// https://chir.ag/projects/name-that-color/
+$color-black: #000;
+$color-black-6: rgba(0, 0, 0, 0.6);
+$color-white: #fff;
+
+$color-primary: #293241;
+$color-primary-15: rgba(
+  $color: $color-primary,
+  $alpha: 0.15,
+);
+$color-shuttle-gray: #63666a;
+$color-nevada: #6e7176;
+$color-iron: #e0e0e1;
+$color-black-haze: #eff0f0;
+$color-silver-sand: #c5c7c8;
+$color-coconut-cream: #f0f8de;
+$color-japanese-laurel: #0b8200;
+$dusty-gray: #9b9b9b;
+$color-rolling-tone: #777a7d;
+$color-rolling-tone-3: rgba(
+  $color: $color-rolling-tone,
+  $alpha: 0.3,
+);
+$color-lima: #7ed321;
+//Primary color at 70% of opacity
+$color-thunderbird: #bc201c;
+$color-linen: #fdf5f4;
+$color-linen-2: #fbe9e9;
+
+//
+$color-title: $color-shuttle-gray;
+$color-paragraph: $color-nevada;
+$color-input-text: $color-shuttle-gray;
+$color-warning: $color-primary;
+$color-disabled: $color-black-haze;
+
+//BUTTONS
+$bg-color-primary-button: $color-primary;
+$bg-color-secondary-button: $color-white;
+
+//HOVER COLORS
+
+// FONTS
+$font-family-primary: 'Open Sans', sans-serif;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+$font-size-tiny: 0.625rem; // 10px
+$font-size-small: 0.875rem; // 14px
+$font-size-normal: 1rem; // 16px
+$font-size-large: 1.125rem; // 18px
+$font-size-xlarge: 1.313rem; // 21px
+$font-size-big: 2rem; // 32px
+$font-size-huge: 3.375rem; // 54px
+
+// How to use font mixin: @include font('small', bold);
+
+@mixin font($type: 'normal', $weight: normal) {
+  font-family: $font-family-primary;
+  font-weight: $weight;
+  font-stretch: normal;
+  letter-spacing: normal;
+  @if $type == 'extra-small' {
+    font-size: 12px;
+    line-height: 1.25;
+  } @else if $type == 'small' {
+    font-size: 14px;
+    line-height: 1.43;
+  } @else if $type == 'normal' {
+    font-size: 16px;
+    line-height: 1.5;
+  } @else if $type == 'medium' {
+    font-size: 18px;
+    line-height: 1.11;
+  } @else if $type == 'big' {
+    font-size: 21px;
+    line-height: 1.33;
+  } @else {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+@mixin ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// GRID
+
+/* 
+  How to use GRID mixin: include the mixin within a media query specifying the extremes. For example:
+
+  @media screen and (min-width: $bp-tablet) and (max-width: $bp-desktop - 1) {
+    @include grid(2, 20px, 30px);
+  }
+*/
+
+// @mixin grid($elements-on-row, $margin-right, $margin-bottom: 0px) {
+//   width: calc(
+//     (100% - 1px - (#{$margin-right} * (#{$elements-on-row} - 1))) / #{$elements-on-row}
+//   );
+//   margin-bottom: $margin-bottom;
+
+//   &:not(:nth-child(#{$elements-on-row}n)) {
+//     margin-right: #{$margin-right};
+//   }
+// }
+
+// SECTION TEMPLATES
+
+// @mixin section-list-template() {
+//   .section {
+//     padding-top: 16px;
+//     padding-bottom: 10px;
+//     &:not(:last-of-type) {
+//       border-bottom: 2px solid $color-very-light-pink;
+//     }
+//   }
+// }
+
+// SIZES & RESPONSIVENESS
+$bp-tablet: 767px;
+$bp-menu: 900px;
+$bp-desktop: 1024px;
+
+$viewport-size: 1440px;
+$viewport-gutter-mobile: 20px;
+$viewport-gutter: 50px;
+
+// Z-INDEXES
+$z-index-default: 10;
+$z-index-header: 70;
+$z-index-modal-overlay: 400;
+$z-index-loader: 500;
+
+// BORDER-RADIUS
+/* $border-radius-small: 8px; */
+$border-radius-big: 16px;
+$border-radius-very-big: 24px;
+
+// BOX-SHADOW
+$box-shadow-small: 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+  0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+$box-shadow-normal: 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+  0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+$box-shadow-big: 0 8px 38px 7px rgba(0, 0, 0, 0.12),
+  0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 10px 13px -6px rgba(0, 0, 0, 0.2);
+
+/*$box-shadow-light: 0 4px 8px 0 rgba(14, 37, 93, 0.08); */
+
+// GRADIENTS
+$linear-gradient-white-left: linear-gradient(
+  to left,
+  rgba(255, 255, 255, 0) 0%,
+  #fff 100%
+);
+$linear-gradient-white-right: linear-gradient(
+  to right,
+  rgba(255, 255, 255, 0) 0%,
+  #fff 100%
+);
+
+// GENERAL
+// $height-profile: 60px;
+// $width-navigation: 60px;
+
+$headerHeight: 117px;
+$footerHeight: 121px;
+
+//////////////////////////
+// COMPONENTS OVERRIDES //
+//////////////////////////
+
+// $hover-ghost-button: rgba(9, 53, 114, 0.1);

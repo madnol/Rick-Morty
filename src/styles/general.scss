@@ -1,0 +1,157 @@
+@import './variables.scss';
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-normal;
+  font-weight: $font-weight-normal;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:focus {
+    outline: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+img {
+  user-select: none;
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+}
+
+b {
+  font-weight: $font-weight-extra-bold;
+}
+
+:global .wrapper {
+  width: 100%;
+  max-width: $viewport-size;
+  padding: 0 $viewport-gutter-mobile;
+  margin: 0 auto;
+  @media screen and (min-width: $bp-tablet) {
+    padding: 0 $viewport-gutter;
+  }
+}
+
+.template {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 150px;
+
+  &-content {
+    position: relative;
+  }
+
+  &-loading-screen {
+    height: calc(100vh - 117px);
+  }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Reffered to the part of code that contains breadcrumb and page title
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .breadcrumb-custom {
+    margin-top: 40px;
+  }
+
+  .page-title {
+    margin-top: 35px;
+    font-size: 21px;
+    line-height: 1.33;
+    font-weight: $font-weight-extra-bold;
+    color: $color-shuttle-gray;
+    text-transform: uppercase;
+
+    span {
+      text-transform: none;
+      font-size: 21px;
+      line-height: 1.33;
+    }
+  }
+
+  .page-cta {
+    display: flex;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.icon-container {
+  display: flex;
+}
+// Used for pass color to svg icons
+.color-primary-icon {
+  color: $color-primary;
+}
+
+.tabs-custom {
+  margin-top: 32px;
+}
+
+.recipes-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 32px -15px 0 -15px;
+
+  .recipe-card-custom {
+    margin: 0 15px 29px 15px;
+
+    @media (min-width: 1200px) {
+      width: calc(25% - 30px);
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      width: calc(100% / 3 - 30px);
+    }
+  }
+}
+
+.loader-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
+  z-index: $z-index-loader;
+
+  &.auto {
+    height: auto;
+  }
+}
+
+.centered-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
