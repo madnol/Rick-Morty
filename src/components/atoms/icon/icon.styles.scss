@@ -1,0 +1,16 @@
+@import '../../../commons/styles/variables';
+
+.icon {
+  width: 100%;
+  border-radius: 50px;
+  padding: 0.5em;
+  box-sizing: content-box;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #323232, #3c3c3c);
+  box-shadow: 5px 5px 10px #1b1b1b, -5px -5px 10px #555555;
+
+  &:active {
+    background: linear-gradient(145deg, #404040, #4c4c4c);
+    box-shadow: 5px 5px 10px #232323, -5px -5px 10px #6b6b6b;
+  }
+}

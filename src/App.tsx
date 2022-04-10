@@ -1,11 +1,11 @@
-import Test from 'components/pages/test';
+import CardGrid from 'components/pages/card-grid';
 
 import './App.scss';
 
 const App = () => {
   return (
     <div className="App">
-      <Test />
+      <CardGrid />
     </div>
   );
 };

@@ -1,0 +1,19 @@
+@import '../../../commons/styles/variables.scss';
+
+.card-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5em;
+
+  .card {
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    transition: transform 0.05s ease-in-out;
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

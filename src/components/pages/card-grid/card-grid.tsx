@@ -4,18 +4,20 @@ import {
   useCallback,
   useEffect,
 } from 'react';
-import classnames from 'classnames';
-import './card-grid.styles.scss';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 
+import { Character } from 'core/api/characters/characters.types';
 import { Dispatch, RootState } from 'core/store/store.types';
 import {
   charactersAsync,
   charactersSelectors,
 } from 'core/store/modules/characters';
-import Card from 'components/atoms/card';
 
-import { Character } from 'core/api/characters/characters.types';
+import Card from 'components/atoms/card';
+import BottomCard from 'components/molecules/bottom-card';
+
+import './card-grid.styles.scss';
 
 interface OwnProps extends HTMLAttributes<HTMLDivElement> {}
 interface StateProps {
@@ -41,12 +43,16 @@ const CardGrid: FunctionComponent<Props> = ({
   useEffect(() => {
     handleData();
   }, [handleData]);
-  console.log(characterList);
+
   return (
     <div className={classnames('test', className)} {...otherProps}>
-      {characterList?.map(({ id, name, image }) => (
-        <Card key={id} name={name} image={image} />
-      ))}
+      <div className="card-grid">
+        {characterList?.map(({ id, name, image }) => (
+          <Card className="card" key={id} image={image}>
+            <BottomCard name={name} isFavorite={true} />
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
