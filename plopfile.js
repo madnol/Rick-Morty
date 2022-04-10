@@ -6,8 +6,8 @@ const componentPaths = new Map([
   ['atoms', 'src/components/{{kebabCase component_type}}'],
   ['molecules', 'src/components/{{kebabCase component_type}}'],
   ['organisms', 'src/components/{{kebabCase component_type}}'],
-  ['containers', 'src/containers'],
-  ['pages', 'src/pages'],
+  ['containers', 'src/components/containers'],
+  ['pages', 'src/components/{{kebabCase component_type}}'],
 ]);
 const reduxTemplatePath = 'plop-templates/redux';
 const reduxPath = 'src/core/store/modules';
