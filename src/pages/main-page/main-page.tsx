@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { RootState } from 'core/store/store.types';
 import SearchBar from 'components/organisms/search-bar';
 import CardGrid from 'containers/card-grid';
+import Icon from 'components/atoms/icon';
+import { Link } from 'react-router-dom';
 
 interface OwnProps extends HTMLProps<HTMLDivElement> {}
 interface StateProps {}
@@ -24,6 +26,16 @@ const MainPage: FunctionComponent<Props> = ({ className, ...otherProps }) => {
   return (
     <div className={classnames('main-page', className)} {...otherProps}>
       <SearchBar value={searchValue} setValue={handleSearchValue} />
+      <Link to="/favorite">
+        <div className="favorite-page-button">
+          <h3>Favorite characters</h3>
+          <Icon
+            className="favorite-page-button-icon"
+            iconName="HeartIcon"
+            color="red"
+          />
+        </div>
+      </Link>
       <CardGrid searchValue={searchValue} />
     </div>
   );

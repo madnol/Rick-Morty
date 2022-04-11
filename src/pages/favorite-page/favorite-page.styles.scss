@@ -1,0 +1,32 @@
+@import '../../commons/styles/variables';
+
+.favorite-page {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .home-page-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      margin: 2em;
+
+      width: 30px;
+      border-radius: 50px;
+
+      background: #474747;
+      box-shadow: inset 5px 5px 10px #363636, inset -5px -5px 10px #585858;
+
+      transition: transform 0.05s ease-in-out;
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}

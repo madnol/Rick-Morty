@@ -1,18 +1,20 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import Icon from 'components/atoms/icon';
 
 import './bottom-card.styles.scss';
 
-export interface Props {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
   name?: string;
-  isFavorite: boolean;
+  isFavorite?: boolean;
   className?: string;
+  onIconClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const BottomCard: FunctionComponent<Props> = ({
   name,
   isFavorite = false,
+  onIconClick,
   className,
   ...otherProps
 }) => (
@@ -24,6 +26,7 @@ const BottomCard: FunctionComponent<Props> = ({
         iconName="HeartIcon"
         color={'red'}
         isIconClicked={isFavorite}
+        onClick={onIconClick}
       />
     </div>
   </div>

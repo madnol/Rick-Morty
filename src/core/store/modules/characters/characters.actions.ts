@@ -2,6 +2,7 @@ import { actionCreatorFactory } from 'typescript-fsa';
 import {
   CharacterListResponseData,
   Episode,
+  Character,
 } from 'core/api/characters/characters.types';
 
 const actionCreator = actionCreatorFactory('characters');
@@ -31,3 +32,17 @@ export const fetchEpisodeListSuccess = actionCreator<{
 export const fetchEpisodeListError = actionCreator<{
   error: string;
 }>('FETCH_EPISODE_LIST_ERROR');
+
+// FAVORITE_LIST_REQUEST
+export const updateFavoriteListStart = actionCreator<void>(
+  'FAVORITE_LIST_START',
+);
+export const addFavorite = actionCreator<{
+  character: Character;
+}>('ADD_FAVORITE_LIST_SUCCESS');
+export const removeFavorite = actionCreator<{
+  character: Character;
+}>('REMOVE_FAVORITE_LIST_SUCCESS');
+export const updateFavoriteListError = actionCreator<{
+  error: string;
+}>('FAVORITE_LIST_ERROR');
