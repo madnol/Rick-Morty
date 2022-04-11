@@ -12,6 +12,11 @@ export interface State {
     };
     error?: string;
   };
+  favorites: {
+    loading: boolean;
+    list: Character[];
+    error?: string;
+  };
   episodeList: {
     loading: boolean;
     list: Episode[];

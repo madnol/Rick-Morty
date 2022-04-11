@@ -8,7 +8,6 @@ export const fetchCharacterList =
     dispatch(actions.fetchCharacterListStart());
     try {
       const characterListData = await charactersApi.getCharactersList(id);
-
       dispatch(actions.fetchCharacterListSuccess({ characterListData }));
     } catch (error) {
       console.log(error);

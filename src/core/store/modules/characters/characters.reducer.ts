@@ -1,5 +1,5 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { State } from './characters.types';
+import { Character, State } from './characters.types';
 import * as actions from './characters.actions';
 
 export const initialState: Readonly<State> = {
@@ -12,6 +12,11 @@ export const initialState: Readonly<State> = {
       next: undefined,
       prev: null,
     },
+    error: undefined,
+  },
+  favorites: {
+    loading: false,
+    list: [],
     error: undefined,
   },
   episodeList: {
@@ -81,6 +86,36 @@ export default reducerWithInitialState(initialState)
     ...state,
     episodeList: {
       ...state.episodeList,
+      loading: false,
+      error,
+    },
+  }))
+  .case(actions.addFavorite, (state, { character }) => {
+    return {
+      ...state,
+      favorites: {
+        ...state.favorites,
+        loading: false,
+        list: [...state.favorites.list, character],
+      },
+    };
+  })
+  .case(actions.removeFavorite, (state, { character }) => {
+    return {
+      ...state,
+      favorites: {
+        ...state.favorites,
+        loading: false,
+        list: state.favorites.list.filter(
+          (favorite: Character) => favorite.id !== character.id,
+        ),
+      },
+    };
+  })
+  .case(actions.updateFavoriteListError, (state, { error }) => ({
+    ...state,
+    favorites: {
+      ...state.favorites,
       loading: false,
       error,
     },
