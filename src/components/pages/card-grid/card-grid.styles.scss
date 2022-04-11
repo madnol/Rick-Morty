@@ -6,6 +6,11 @@
   flex-wrap: wrap;
   gap: 1.5em;
 
+  .character-detail-modal {
+    position: absolute;
+    z-index: 20;
+  }
+
   .card {
     display: flex;
     align-items: flex-end;
