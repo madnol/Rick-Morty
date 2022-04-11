@@ -4,10 +4,17 @@ export const transformCharacterList = (characters: any[]): Character[] => {
   return characters.map(character => ({
     id: character?.id,
     name: character?.name,
+    status: character?.status,
+    species: character?.species,
+    type: character?.type,
+    gender: character?.gender,
+    origin: character?.origin?.name,
+    location: character?.location?.name,
     image: character?.image,
     episodes: character?.episode?.map((episodeNumber: string) =>
       episodeNumber.replace(/\D/g, ''),
     ),
+    created: `${new Date(character?.created)}`,
   }));
 };
 

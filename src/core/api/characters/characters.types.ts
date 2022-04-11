@@ -11,8 +11,15 @@ export type CharacterListResponseData = {
 export type Character = {
   id: number;
   name?: string;
+  status?: string;
+  species?: string;
+  type?: string;
+  gender?: string;
+  origin?: string;
+  location?: string;
   image?: string;
   episodes?: string[];
+  created?: string;
 };
 
 export type CharacterListParams = {

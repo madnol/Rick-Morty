@@ -3,6 +3,7 @@ import {
   HTMLAttributes,
   useCallback,
   useEffect,
+  useState,
 } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
@@ -18,6 +19,7 @@ import Card from 'components/atoms/card';
 import BottomCard from 'components/molecules/bottom-card';
 
 import './card-grid.styles.scss';
+import CharacterDetail from 'components/organisms/character-detail';
 
 interface OwnProps extends HTMLAttributes<HTMLDivElement> {
   searchValue: string;
@@ -38,6 +40,9 @@ const CardGrid: FunctionComponent<Props> = ({
   fetchCharacterList,
   ...otherProps
 }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character>();
+
   const handleData = useCallback(() => {
     const result = fetchCharacterList(1);
     return result;
@@ -47,6 +52,18 @@ const CardGrid: FunctionComponent<Props> = ({
     character.name?.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
+  const handleOpenMoldal = useCallback(
+    character => {
+      if (showModal) {
+        setSelectedCharacter(character);
+      } else {
+        setShowModal(!showModal);
+        setSelectedCharacter(character);
+      }
+    },
+    [showModal],
+  );
+
   useEffect(() => {
     handleData();
   }, [handleData]);
@@ -54,8 +71,20 @@ const CardGrid: FunctionComponent<Props> = ({
   return (
     <>
       <div className={classnames('card-grid', className)} {...otherProps}>
-        {filteredCharacterList?.map(({ id, name, image }) => (
-          <Card className="card" key={id} image={image}>
+        {!!showModal && (
+          <CharacterDetail
+            data={selectedCharacter}
+            className={'character-detail-modal'}
+            setModalshow={() => setShowModal(!showModal)}
+          />
+        )}
+        {filteredCharacterList?.map(({ id, name, image, ...data }) => (
+          <Card
+            className="card"
+            key={id}
+            image={image}
+            onClick={() => handleOpenMoldal({ name, image, ...data })}
+          >
             <BottomCard name={name} isFavorite={true} />
           </Card>
         ))}

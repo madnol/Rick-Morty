@@ -1,0 +1,63 @@
+@import '../../../commons/styles/variables';
+
+.character-detail {
+  display: flex;
+  width: 50vw;
+  aspect-ratio: 1.5;
+  background-color: $color-white;
+  border-radius: 50px;
+  background-color: #fff;
+
+  &-close {
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    box-shadow: none;
+  }
+
+  &-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    overflow: hidden;
+
+    .character-detail-image {
+      flex: 1;
+      height: 100%;
+      cursor: default;
+      box-shadow: none;
+      position: static;
+    }
+
+    .character-detail-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+      overflow: hidden;
+
+      .character-detail-name {
+        font-size: 2em;
+        font-weight: 700;
+        text-align: center;
+        color: $color-primary;
+        margin-bottom: 2em;
+      }
+
+      &-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1em;
+        font-weight: 400;
+        text-align: center;
+        color: $color-primary;
+      }
+    }
+  }
+}

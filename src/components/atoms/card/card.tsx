@@ -19,7 +19,6 @@ const Card: FunctionComponent<Props> = ({
     {!!image && (
       <img className={classnames('card-image')} src={image} alt={title} />
     )}
-    <div className="card-overlay" />
     {!!children && <div className="card-children">{children}</div>}
   </div>
 );
