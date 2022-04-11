@@ -19,7 +19,9 @@ import BottomCard from 'components/molecules/bottom-card';
 
 import './card-grid.styles.scss';
 
-interface OwnProps extends HTMLAttributes<HTMLDivElement> {}
+interface OwnProps extends HTMLAttributes<HTMLDivElement> {
+  searchValue: string;
+}
 interface StateProps {
   characterList: Character[];
 }
@@ -31,6 +33,7 @@ export type Props = OwnProps & StateProps & DispatchProps;
 
 const CardGrid: FunctionComponent<Props> = ({
   className,
+  searchValue,
   characterList,
   fetchCharacterList,
   ...otherProps
@@ -40,20 +43,24 @@ const CardGrid: FunctionComponent<Props> = ({
     return result;
   }, [fetchCharacterList]);
 
+  const filteredCharacterList = characterList?.filter(character =>
+    character.name?.toLowerCase().includes(searchValue.toLowerCase()),
+  );
+
   useEffect(() => {
     handleData();
   }, [handleData]);
 
   return (
-    <div className={classnames('test', className)} {...otherProps}>
-      <div className="card-grid">
-        {characterList?.map(({ id, name, image }) => (
+    <>
+      <div className={classnames('card-grid', className)} {...otherProps}>
+        {filteredCharacterList?.map(({ id, name, image }) => (
           <Card className="card" key={id} image={image}>
             <BottomCard name={name} isFavorite={true} />
           </Card>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
